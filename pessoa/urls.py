@@ -1,8 +1,11 @@
 from django.urls import path
 
-from .views import ListaPessoaView, PessoaCreatView
+from .views import (ListaPessoaView, PessoaCreatView, PessoaDeleteView,
+                    PessoaUpdateView)
 
 urlpatterns = [
     path('', ListaPessoaView.as_view(), name='pessoa.index'),
-    path('novo/', PessoaCreatView.as_view(), name='pessoa.novo')
+    path('novo/', PessoaCreatView.as_view(), name='pessoa.novo'),
+    path('editar/<int:pk>', PessoaUpdateView.as_view(), name='pessoa.editar'),
+    path('remover/<int:pk>', PessoaDeleteView.as_view(), name='pessoa.remover')
 ]
